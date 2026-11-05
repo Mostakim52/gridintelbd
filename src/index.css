@@ -1,0 +1,1244 @@
+@import "tailwindcss";
+/* InstaLanding design system · Kairo · kairo@1.0.0 — vendored, unmodified.
+   Extracted from https://instalanding.ai/demos/kairo-time-assistant.html */
+@import "./styles/kairo.css";
+
+/* =========================================================================
+   GridIntelBD additions to kairo@1.0.0.
+   Everything here consumes the system's tokens; the `gs-` prefix marks the
+   handful of surfaces Kairo does not ship (range inputs, an instrument scope,
+   a data table, a schematic's typography). No new colours are introduced.
+   ========================================================================= */
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--kr-bg);
+}
+
+.gs-app {
+  min-height: 100vh;
+}
+
+.gs-skip {
+  position: absolute;
+  left: 12px;
+  top: -80px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: var(--kr-pill);
+  background: var(--kr-accent);
+  color: #fff;
+  font: 600 13px var(--kr-font-text);
+  transition: top var(--kr-dur-quick) var(--kr-ease);
+}
+.gs-skip:focus-visible {
+  top: 12px;
+}
+
+/* ---------- nav ---------- */
+
+.gs-nav-links a.is-on {
+  color: var(--kr-text);
+  background: rgba(255, 255, 255, 0.07);
+}
+.gs-nav-links a.is-on::after {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 7px;
+  border-radius: 50%;
+  background: var(--kr-accent);
+  vertical-align: 1px;
+}
+.kr-menu-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: var(--kr-hair) solid var(--kr-line2);
+  place-items: center;
+  color: var(--kr-text);
+}
+.kr-mobile-menu {
+  z-index: 99;
+}
+.kr-mobile-menu a.is-on {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--kr-text);
+}
+
+/* ---------- heroes ---------- */
+
+.gs-hero-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.gs-hero-title {
+  font-size: var(--kr-title);
+  max-width: 17ch;
+  margin: 22px 0 20px;
+  letter-spacing: -0.045em;
+}
+
+.gs-hero-sub {
+  max-width: 64ch;
+  font-size: var(--kr-lead);
+  line-height: 1.62;
+  color: var(--kr-muted);
+}
+
+.gs-hero-sub strong {
+  color: var(--kr-text);
+  font-weight: 500;
+}
+
+/* ---------- chips ---------- */
+
+.gs-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: var(--kr-pill);
+  font: 600 10.5px var(--kr-font-mono);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.gs-chip--good {
+  color: var(--kr-mint);
+  background: rgba(79, 227, 177, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(79, 227, 177, 0.22);
+}
+.gs-chip--hot {
+  color: var(--kr-accent2);
+  background: rgba(255, 107, 44, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 107, 44, 0.26);
+}
+.gs-chip--rose {
+  color: var(--kr-rose);
+  background: rgba(255, 92, 138, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 92, 138, 0.24);
+}
+.gs-chip--mute {
+  color: var(--kr-muted);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px var(--kr-line2);
+}
+
+/* ---------- KPI strip ---------- */
+
+.gs-kpis {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--kr-gap);
+  margin-top: 52px;
+}
+
+.gs-kpi {
+  min-height: 0;
+  padding: 20px 22px 18px;
+}
+
+.gs-kpi-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.gs-kpi-top .kr-tag {
+  margin-bottom: 0;
+  color: var(--kr-muted);
+  letter-spacing: 0.09em;
+}
+
+.gs-ico {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 10px;
+  border: var(--kr-hair) solid var(--kr-line2);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--kr-accent2);
+}
+
+.gs-fig-row {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.gs-fig {
+  font: 700 34px/1 var(--kr-font-display);
+  letter-spacing: -0.05em;
+  background: linear-gradient(180deg, #fff, #7a7a84);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+
+.gs-fig-unit {
+  font: 500 11.5px var(--kr-font-mono);
+  color: var(--kr-muted);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.gs-kpi .kr-stat-bar {
+  margin-top: 14px;
+  height: 3px;
+}
+
+.gs-kpi-sub {
+  margin-top: 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--kr-muted);
+}
+
+/* ---------- workspace ---------- */
+
+.gs-work {
+  display: grid;
+  grid-template-columns: 344px minmax(0, 1fr);
+  gap: var(--kr-gap);
+  align-items: start;
+  margin-top: var(--kr-gap);
+}
+
+.gs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kr-gap);
+  min-width: 0;
+}
+
+.gs-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--kr-gap);
+}
+
+.gs-sticky {
+  position: sticky;
+  top: calc(var(--kr-nav-h) + 16px);
+}
+
+/* ---------- panel (Kairo card, auto height) ---------- */
+
+.gs-panel {
+  min-height: 0;
+}
+.gs-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px 0;
+}
+.gs-h2 {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-family: var(--kr-font-display);
+  line-height: 1.2;
+}
+.gs-sub {
+  margin-top: 6px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--kr-muted);
+  max-width: 54ch;
+}
+.gs-panel-body {
+  padding: 18px 24px 24px;
+}
+.gs-body--flush {
+  padding: 14px 12px 6px;
+}
+
+/* ---------- buttons ---------- */
+
+.gs-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 34px;
+  padding: 0 14px;
+  flex: none;
+  border-radius: var(--kr-pill);
+  border: var(--kr-hair) solid var(--kr-line2);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--kr-muted);
+  font: 600 12.5px var(--kr-font-text);
+  white-space: nowrap;
+  transition: color var(--kr-dur-quick) var(--kr-ease),
+    background var(--kr-dur-quick) var(--kr-ease),
+    transform var(--kr-dur-quick) var(--kr-ease);
+}
+.gs-ghost:hover {
+  color: var(--kr-text);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+.gs-ghost:active {
+  transform: translateY(0);
+}
+.gs-ghost[aria-pressed="true"] {
+  color: var(--kr-accent2);
+  border-color: rgba(255, 107, 44, 0.5);
+  background: rgba(255, 107, 44, 0.1);
+}
+
+/* segmented control */
+.gs-seg {
+  display: inline-flex;
+  gap: 3px;
+  padding: 4px;
+  border-radius: var(--kr-pill);
+  border: var(--kr-hair) solid var(--kr-line);
+  background: rgba(255, 255, 255, 0.02);
+}
+.gs-seg button {
+  padding: 7px 13px;
+  border-radius: var(--kr-pill);
+  font: 600 11.5px var(--kr-font-mono);
+  letter-spacing: 0.04em;
+  color: var(--kr-muted);
+  transition: color var(--kr-dur-quick) var(--kr-ease),
+    background var(--kr-dur-quick) var(--kr-ease);
+}
+.gs-seg button:hover {
+  color: var(--kr-text);
+}
+.gs-seg button[aria-pressed="true"] {
+  color: #fff;
+  background: var(--kr-accent);
+  box-shadow: 0 0 18px -6px var(--kr-accent);
+}
+
+/* ---------- range inputs ---------- */
+
+.gs-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.gs-slider-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 11px;
+}
+.gs-slider-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--kr-text);
+}
+.gs-slider-value {
+  font: 600 11.5px var(--kr-font-mono);
+  color: var(--kr-accent2);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.gs-slider-hint {
+  margin-top: 9px;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--kr-dim);
+}
+
+.gs-range {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--kr-accent) 0%,
+    var(--kr-accent) var(--kr-fill, 0%),
+    rgba(255, 255, 255, 0.09) var(--kr-fill, 0%),
+    rgba(255, 255, 255, 0.09) 100%
+  );
+  cursor: pointer;
+}
+.gs-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--kr-accent);
+  box-shadow: 0 0 0 4px rgba(255, 107, 44, 0.12), 0 0 16px -2px var(--kr-accent);
+  transition: transform 0.15s var(--kr-ease);
+}
+.gs-range:active::-webkit-slider-thumb {
+  transform: scale(1.16);
+}
+.gs-range::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--kr-accent);
+  box-shadow: 0 0 0 4px rgba(255, 107, 44, 0.12);
+}
+.gs-range::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: transparent;
+}
+.gs-range:focus-visible {
+  outline: 2px solid var(--kr-accent);
+  outline-offset: 6px;
+  border-radius: var(--kr-pill);
+}
+
+.gs-foot-note {
+  padding: 14px 24px 20px;
+  border-top: var(--kr-hair) solid var(--kr-line);
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--kr-dim);
+}
+.gs-foot-note strong {
+  color: var(--kr-accent2);
+  font-weight: 600;
+}
+
+/* ---------- schematic typography (SVG) ---------- */
+
+.gs-net {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.gs-net text {
+  font-family: var(--kr-font-text);
+}
+.gs-net .n-name {
+  font: 600 12px var(--kr-font-display);
+  fill: var(--kr-text);
+  letter-spacing: -0.01em;
+}
+.gs-net .n-sub {
+  font: 500 10.5px var(--kr-font-text);
+  fill: var(--kr-dim);
+}
+.gs-net .n-mono {
+  font: 500 10px var(--kr-font-mono);
+  fill: var(--kr-muted);
+  font-variant-numeric: tabular-nums;
+}
+.gs-net .n-cap {
+  font: 600 8.5px var(--kr-font-mono);
+  fill: var(--kr-dim);
+  letter-spacing: 0.14em;
+}
+.gs-net .n-live {
+  font: 600 11px var(--kr-font-mono);
+  fill: var(--kr-accent2);
+  font-variant-numeric: tabular-nums;
+}
+
+.gs-flow {
+  stroke-dasharray: 3 9;
+  animation: gs-dash 1.1s linear infinite;
+}
+@keyframes gs-dash {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+.gs-spark {
+  animation: gs-spark 1.9s ease-in-out infinite;
+}
+@keyframes gs-spark {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.gs-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  padding: 14px 24px 18px;
+  border-top: var(--kr-hair) solid var(--kr-line);
+}
+.gs-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 11px var(--kr-font-mono);
+  letter-spacing: 0.03em;
+  color: var(--kr-muted);
+}
+.gs-key {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  flex: none;
+}
+.gs-key--5 {
+  height: 5px;
+}
+.gs-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--kr-accent);
+  box-shadow: 0 0 10px var(--kr-accent);
+  flex: none;
+}
+
+/* ---------- loss breakdown bars ---------- */
+
+.gs-bd + .gs-bd {
+  margin-top: 20px;
+}
+.gs-bd-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  font: 500 11px var(--kr-font-mono);
+  letter-spacing: 0.04em;
+  color: var(--kr-muted);
+}
+.gs-bd-head b {
+  color: var(--kr-text);
+  font-weight: 600;
+}
+.gs-bd-bar {
+  display: flex;
+  height: 16px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px var(--kr-line);
+}
+.gs-bd-seg {
+  height: 100%;
+  transition: width 0.5s var(--kr-ease);
+}
+
+.gs-bd-keys {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+.gs-bd-key {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12.5px;
+  color: var(--kr-muted);
+}
+.gs-bd-key b {
+  margin-left: auto;
+  font: 600 12px var(--kr-font-mono);
+  color: var(--kr-text);
+  font-variant-numeric: tabular-nums;
+}
+.gs-bd-key--total {
+  padding-top: 10px;
+  border-top: var(--kr-hair) solid var(--kr-line);
+}
+.gs-bd-key--total b {
+  color: var(--kr-accent2);
+}
+.gs-sw {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  flex: none;
+}
+
+/* ---------- table ---------- */
+
+.gs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font: 500 12.5px var(--kr-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.gs-table th {
+  padding: 0 0 11px;
+  font: 500 10px var(--kr-font-mono);
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--kr-dim);
+  text-align: left;
+}
+.gs-table th:not(:first-child),
+.gs-table td:not(:first-child) {
+  text-align: right;
+}
+.gs-table td {
+  padding: 12px 0;
+  border-top: var(--kr-hair) solid var(--kr-line);
+  color: var(--kr-text);
+}
+.gs-table td:first-child {
+  font-family: var(--kr-font-text);
+  font-size: 13px;
+  color: var(--kr-muted);
+}
+.gs-table tr.is-total td {
+  border-top-color: var(--kr-line2);
+  color: #fff;
+}
+.gs-up {
+  color: var(--kr-mint);
+}
+.gs-flat {
+  color: var(--kr-dim);
+}
+
+/* ---------- briefing note ---------- */
+
+.gs-note-box {
+  max-height: 320px;
+  overflow: auto;
+  padding: 20px;
+  border-radius: var(--kr-r-panel);
+  background: #08080a;
+  box-shadow: inset 0 0 0 1px var(--kr-line);
+}
+.gs-note-box pre {
+  margin: 0;
+  font: 500 11.5px/1.85 var(--kr-font-mono);
+  color: #9b9ba3;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ---------- method sheet (light closing section) ---------- */
+
+.gs-sheet-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 720px;
+}
+.gs-sheet-head h2 {
+  font-size: var(--kr-h2);
+  margin: 20px 0 16px;
+  letter-spacing: -0.04em;
+}
+.gs-sheet-head p {
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--kr-paper-muted);
+  max-width: 60ch;
+}
+.gs-lcards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--kr-gap);
+  margin-top: 56px;
+}
+.gs-lcard {
+  min-height: 0;
+}
+.gs-lcard h3 {
+  font-family: var(--kr-font-display);
+  font-weight: 700;
+}
+.gs-lcard p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--kr-paper-muted);
+}
+.gs-facts {
+  display: grid;
+  gap: 0;
+  margin-top: 4px;
+}
+.gs-fact {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  font: 500 11.5px var(--kr-font-mono);
+  color: var(--kr-paper-muted);
+}
+.gs-fact:first-child {
+  border-top: 0;
+}
+.gs-fact b {
+  color: var(--kr-paper-ink);
+  font-weight: 600;
+  text-align: right;
+}
+
+.gs-caveat {
+  margin-top: var(--kr-gap);
+  padding: 26px 30px;
+  border-radius: var(--kr-r-panel);
+  background: rgba(11, 11, 12, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+}
+.gs-caveat p {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #3a3a3f;
+  max-width: 92ch;
+}
+.gs-caveat strong {
+  color: var(--kr-paper-ink);
+  font-weight: 600;
+}
+
+/* ---------- instrument (field page) ---------- */
+
+.gs-readout {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--kr-gap);
+  margin-top: 44px;
+}
+
+.gs-gapfig {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.gs-gapfig b {
+  font: 700 var(--kr-hero)/0.9 var(--kr-font-display);
+  letter-spacing: -0.06em;
+  background: linear-gradient(100deg, #fff 15%, var(--kr-accent2) 55%, var(--kr-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+.gs-gapfig small {
+  font: 500 13px var(--kr-font-mono);
+  color: var(--kr-muted);
+  letter-spacing: 0.04em;
+}
+
+.gs-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 10.5px var(--kr-font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kr-accent);
+}
+.gs-live i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--kr-accent);
+  animation: gs-live 1.5s ease-out infinite;
+}
+.gs-live--off {
+  color: var(--kr-dim);
+}
+.gs-live--off i {
+  background: var(--kr-dim);
+  animation: none;
+}
+@keyframes gs-live {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 44, 0.65);
+  }
+  100% {
+    box-shadow: 0 0 0 9px rgba(255, 107, 44, 0);
+  }
+}
+
+/* channel card */
+.gs-ch {
+  min-height: 0;
+}
+.gs-ch-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 20px 22px 0;
+}
+.gs-ch-id {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gs-ch-badge {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  font: 700 13px var(--kr-font-display);
+  color: #fff;
+  flex: none;
+}
+.gs-ch-badge--a {
+  background: linear-gradient(145deg, var(--kr-accent-hi), var(--kr-accent));
+  box-shadow: 0 0 22px -8px var(--kr-accent);
+}
+.gs-ch-badge--b {
+  background: linear-gradient(145deg, #6ff0c8, var(--kr-mint));
+  color: #04231a;
+  box-shadow: 0 0 22px -8px var(--kr-mint);
+}
+.gs-ch-meta {
+  font: 500 10.5px var(--kr-font-mono);
+  letter-spacing: 0.05em;
+  color: var(--kr-dim);
+  margin-top: 2px;
+}
+.gs-ch-fig {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 16px 22px 0;
+}
+.gs-ch-fig b {
+  font: 700 40px/1 var(--kr-font-display);
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(180deg, #fff, #74747e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gs-ch-fig small {
+  font: 500 11.5px var(--kr-font-mono);
+  color: var(--kr-muted);
+}
+.gs-ch-range {
+  padding: 6px 22px 0;
+  font: 500 11px var(--kr-font-mono);
+  color: var(--kr-dim);
+}
+
+/* scope */
+.gs-scope {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.gs-scope .s-grid {
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 1;
+}
+.gs-scope .s-label {
+  font: 500 9px var(--kr-font-mono);
+  fill: var(--kr-dim);
+}
+
+.gs-scope-wrap {
+  padding: 10px 8px 6px;
+}
+
+/* event log */
+.gs-events {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.gs-event {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-top: var(--kr-hair) solid var(--kr-line);
+  font: 500 11.5px var(--kr-font-mono);
+}
+.gs-event:first-child {
+  border-top: 0;
+}
+.gs-event i {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: rgba(255, 92, 138, 0.12);
+  color: var(--kr-rose);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+}
+.gs-event-msg {
+  color: var(--kr-text);
+  font-family: var(--kr-font-text);
+  font-size: 12.5px;
+}
+.gs-event-msg em {
+  display: block;
+  font: 500 10.5px var(--kr-font-mono);
+  color: var(--kr-dim);
+  font-style: normal;
+  margin-top: 2px;
+}
+.gs-event b {
+  color: var(--kr-rose);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.gs-empty {
+  padding: 22px 0;
+  font-size: 12.5px;
+  color: var(--kr-dim);
+  text-align: center;
+}
+
+/* reconciliation */
+.gs-recon {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--kr-gap);
+  margin-top: 4px;
+}
+.gs-recon-cell {
+  padding: 16px 18px;
+  border-radius: var(--kr-r-chip);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 0 0 1px var(--kr-line);
+}
+.gs-recon-cell span {
+  display: block;
+  font: 500 10px var(--kr-font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kr-dim);
+}
+.gs-recon-cell b {
+  display: block;
+  margin-top: 8px;
+  font: 700 24px/1 var(--kr-font-display);
+  letter-spacing: -0.04em;
+  color: var(--kr-text);
+  font-variant-numeric: tabular-nums;
+}
+.gs-recon-cell.is-good b {
+  color: var(--kr-mint);
+}
+
+/* ---------- phone (Kairo app screen) ---------- */
+
+.gs-phone-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 40px 0 0;
+  min-height: 460px;
+}
+.gs-phone-switch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 4;
+}
+.gs-app-screen .kr-app-head b {
+  font-size: 1.5em;
+}
+.gs-meter-card {
+  border-radius: 1.3em;
+  background: linear-gradient(160deg, rgba(255, 107, 44, 0.16), var(--kr-a-card) 55%);
+  border: 1px solid color-mix(in srgb, var(--kr-accent) 32%, transparent);
+  padding: 1em;
+}
+.gs-meter-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6em;
+}
+.gs-meter-top small {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font: 600 0.6em var(--kr-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kr-accent);
+}
+.gs-meter-top small i {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--kr-accent);
+  animation: gs-live 1.5s infinite;
+}
+.gs-meter-val {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35em;
+  margin-top: 0.35em;
+}
+.gs-meter-val b {
+  font: 700 2.3em/1 var(--kr-font-display);
+  letter-spacing: -0.05em;
+  color: var(--kr-a-text);
+}
+.gs-meter-val span {
+  font: 600 0.7em var(--kr-font-mono);
+  color: var(--kr-a-muted);
+}
+.gs-meter-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6em;
+  margin-top: 0.85em;
+}
+.gs-meter-split div {
+  border-radius: 0.8em;
+  padding: 0.55em 0.6em;
+  background: var(--kr-a-card2);
+}
+.gs-meter-split span {
+  display: block;
+  font: 600 0.55em var(--kr-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kr-a-muted);
+}
+.gs-meter-split b {
+  display: block;
+  margin-top: 0.3em;
+  font: 700 0.95em var(--kr-font-mono);
+  color: var(--kr-a-text);
+}
+.gs-meter-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.4em;
+  height: 3.4em;
+  margin-top: 0.5em;
+}
+.gs-meter-bars div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.3em;
+  height: 100%;
+}
+.gs-meter-bars i {
+  width: 100%;
+  border-radius: 0.35em;
+  background: var(--kr-a-card2);
+  height: var(--h);
+}
+.gs-meter-bars i.is-on {
+  background: linear-gradient(180deg, var(--kr-accent2), var(--kr-accent));
+}
+.gs-meter-bars span {
+  font-size: 0.48em;
+  font-weight: 600;
+  color: var(--kr-a-muted);
+}
+
+/* ---------- CTA + footer ---------- */
+
+.gs-cta {
+  margin-top: 96px;
+}
+.gs-cta h2 {
+  font-size: var(--kr-cta);
+  max-width: 15ch;
+}
+.gs-cta p {
+  max-width: 46ch;
+  font-size: 15.5px;
+}
+.gs-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+  position: relative;
+}
+
+.gs-footer {
+  border-radius: 0;
+}
+/* Kairo sets the wordmark at line-height .8 and paints it with
+   background-clip:text, so the gradient only exists inside the element's
+   background box — anything the glyphs do outside that box renders as bare
+   transparent and reads as a hard slice. Give the box the full ink extents
+   (padding, not overflow) and size the type so the nowrap line still fits. */
+.gs-wordmark {
+  display: block;
+  width: 100%;
+  max-width: none;
+  overflow: visible;
+  white-space: nowrap;
+  line-height: 1.16;
+  padding-block: 0.12em;
+}
+.kr .gs-wordmark {
+  --kr-wordmark: clamp(40px, calc(19.6vw - 12px), 232px);
+  /* the padded box is taller than the ink, so remap Kairo's fade to the ink
+     extents (approx. 21%–77% of the box at this line-height) instead of the
+     box edges, otherwise the bottom of the word no longer fades out */
+  background-image: linear-gradient(
+    180deg,
+    var(--kr-paper-ink) 0%,
+    var(--kr-paper-ink) 38%,
+    rgba(11, 11, 12, 0.05) 77%
+  );
+}
+
+/* ---------- small additions ---------- */
+
+.gs-lcard .kr-card-text {
+  padding: 26px 30px 30px;
+}
+
+.gs-pbar {
+  height: 0.55em;
+  border-radius: 0.3em;
+  background: var(--kr-a-card2);
+  overflow: hidden;
+}
+.gs-pbar i {
+  display: block;
+  height: 100%;
+  border-radius: 0.3em;
+  transition: width 0.5s var(--kr-ease);
+}
+
+.gs-controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.gs-schematic {
+  padding: 4px 8px 0;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1180px) {
+  .gs-kpis {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .gs-work {
+    grid-template-columns: 1fr;
+  }
+  .gs-sticky {
+    position: static;
+  }
+  .gs-readout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .gs-2,
+  .gs-lcards,
+  .gs-recon {
+    grid-template-columns: 1fr;
+  }
+  .gs-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .gs-panel-head {
+    padding: 20px 18px 0;
+  }
+  .gs-panel-body {
+    padding: 16px 18px 20px;
+  }
+  .gs-body--flush {
+    padding: 10px 6px 4px;
+  }
+  .gs-foot-note {
+    padding: 12px 18px 18px;
+  }
+  .gs-legend {
+    padding: 12px 18px 16px;
+  }
+  .gs-hero-title {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .gs-lcard .kr-card-text {
+    padding: 22px 22px 26px;
+  }
+  .gs-kpis,
+  .gs-readout {
+    grid-template-columns: 1fr;
+  }
+  .gs-fig {
+    font-size: 30px;
+  }
+  .gs-ch-fig b {
+    font-size: 34px;
+  }
+  .gs-note-box {
+    padding: 16px;
+    max-height: 260px;
+  }
+  .gs-event {
+    grid-template-columns: 24px 1fr;
+  }
+  .gs-event b {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .gs-table td:first-child {
+    font-size: 12px;
+  }
+  .gs-phone-stage {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-flow,
+  .gs-spark,
+  .gs-live i,
+  .gs-meter-top small i {
+    animation: none !important;
+  }
+  .gs-range::-webkit-slider-thumb {
+    transition: none;
+  }
+}

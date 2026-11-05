@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="GridIntelBD">
+  <defs>
+    <linearGradient id="bolt" x1="10" y1="4" x2="38" y2="44" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB36B"/>
+      <stop offset="1" stop-color="#FF6B2C"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="11" fill="#050506"/>
+  <rect x="0.5" y="0.5" width="47" height="47" rx="10.5" fill="none" stroke="#FF6B2C" stroke-opacity="0.3"/>
+  <path d="M26 4 9 27h13l-2 17 17-23H24z" fill="url(#bolt)"/>
+</svg>
