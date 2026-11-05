@@ -26,7 +26,7 @@
 | `#/` | **Simulator** — move the underground share and watch loss, recovered energy, unserved energy, savings and payback move together |
 | `#/field` | **Field rig** — the same route twice, one span overhead and one ducted, metered at both ends |
 
-- **Live demo:** _add your deployed URL here_
+- **Live demo:** _add your Vercel URL here_
 - **Walkthrough video:** _add your video URL here_
 
 ---
@@ -169,15 +169,15 @@ npm run preview
 
 ### Deploy
 
-The demo is a fully client-side static app — no backend or database is required, so it
+The app is fully client-side — no backend, database or environment variables — so it
 deploys anywhere:
 
-- **Netlify / Vercel:** build command `npm run build`, publish directory `dist`.
+- **Vercel:** import the repo and keep the detected **Vite** preset. Build `npm run build`,
+  output directory `dist`. No rewrites or redirects are needed: routing lives in the URL
+  fragment, so every deep link is served from `index.html` without a 404 fallback.
+- **Netlify:** build `npm run build`, publish `dist`.
 - **GitHub Pages:** push `dist/` (the Vite `base` is already `./`, so it works from a
   project sub-path).
-
-`backend/` is an optional Node stub from an earlier iteration of the idea. It is not used
-by this demo.
 
 ---
 
