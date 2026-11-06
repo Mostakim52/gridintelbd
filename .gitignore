@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Personal recording notes — kept local, not part of the submission
+WALKTHROUGH.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
